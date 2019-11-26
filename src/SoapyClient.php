@@ -12,6 +12,6 @@ class SoapyClient extends \SoapClient
 
     public function call($function, $arguments)
     {
-        return call_user_func_array([$this, $function], $arguments);
+        return $this->$function($arguments);
     }
 }
