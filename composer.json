@@ -1,0 +1,38 @@
+{
+    "name": "sourcetoad/soapy",
+    "description": "A Soap Client built for Laravel.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "soap",
+        "client"
+    ],
+    "authors": [
+        {
+            "name": "Connor Tumbleson",
+            "email": "connor@sourcetoad.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.0",
+        "ext-soap": "*",
+        "ext-simplexml": "*",
+        "illuminate/support": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sourcetoad\\Soapy\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sourcetoad\\Soapy\\SoapyServiceProvider"
+            ]
+        }
+    }
+}
