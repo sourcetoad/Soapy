@@ -1,6 +1,6 @@
 ## Soapy
 
-SOAP is old, but still used. Soapy is modern, but feature limited to fit our use cases.
+SOAP is old, but still used. Soapy is modern, but feature limited to fit our use cases.  
 Heavily inspired by [artisaninweb/laravel-soap](https://github.com/artisaninweb/laravel-soap).
 
 ### Install
