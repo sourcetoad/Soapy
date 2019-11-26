@@ -82,12 +82,12 @@ class SoapyCurtain
         return array_merge($this->options, $baseOptions);
     }
 
-    public function getClassmap(): array
+    public function getClassmap(): ?array
     {
         return $this->classMap;
     }
 
-    public function getTypemap(): array
+    public function getTypemap(): ?array
     {
         return $this->typeMap;
     }
