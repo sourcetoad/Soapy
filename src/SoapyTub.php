@@ -3,11 +3,13 @@ declare(strict_types = 1);
 
 namespace Sourcetoad\Soapy;
 
+use Sourcetoad\Soapy\Exceptions\ClientClassNotFoundException;
 use Sourcetoad\Soapy\Exceptions\CurtainNotSetupException;
+use Sourcetoad\Soapy\Exceptions\CurtainRequiresWsdlException;
 
 class SoapyTub
 {
-    public function create(\Closure $closure): SoapyClient
+    public function create(\Closure $closure, string $soapClient = null): SoapyBaseClient
     {
         $curtain = new SoapyCurtain();
 
@@ -18,7 +20,20 @@ class SoapyTub
             throw new CurtainNotSetupException();
         }
 
-        $client = new SoapyClient(
+        /** @var SoapyBaseClient $soapyClient */
+        $soapyClient = SoapyClient::class;
+        if (! empty($soapClient)) {
+            if (! class_exists($soapClient)) {
+                throw new ClientClassNotFoundException();
+            }
+            $soapyClient = $soapClient;
+        }
+
+        if (empty($service->getWsdl())) {
+            throw new CurtainRequiresWsdlException();
+        }
+
+        $client = new $soapyClient(
             $service->getWsdl(),
             $service->getOptions()
         );
