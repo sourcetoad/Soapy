@@ -21,7 +21,7 @@ class SoapyCurtain
     protected $certificate;
 
     /** @var array */
-    protected $options;
+    protected $options = [];
 
     /** @var array */
     protected $classMap;
