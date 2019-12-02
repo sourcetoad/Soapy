@@ -6,7 +6,7 @@ namespace Sourcetoad\Soapy;
 class SoapyCurtain
 {
     /** @var string */
-    protected $wsdl;
+    protected $wsdl = '';
 
     /** @var bool */
     protected $trace = false;
