@@ -132,3 +132,29 @@ $this->client->call('fizz', [
 ```
 
 This is more error prone due to human error with keys, but less work.
+
+#### Example (Custom Client)
+
+Sometimes you may have a SOAP Integration that just isn't fun. It may use something that our default SoapyClient cannot handle.
+This is okay, because patching a generic SOAP Client for all the strangeness that can happen is not feasible.
+
+Start with a new class, that extends our SoapyBaseClient.
+
+```
+<?php
+
+class CustomClass extends Sourcetoad\Soapy\SoapyBaseClient {
+
+}
+```
+
+From that class. You can overload any of the functions it provides.
+
+Then pass the class name (fully qualified) to the Curtain during generation.
+
+```
+$this->client = SoapyFacade::create(function (SoapyCurtain $curtain) {
+    return $curtain
+        ->setWsdl('http://example.org?wsdl')
+}, CustomClass::class);
+```
