@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * Class SoapyFacade
- * @method static SoapyClient create(\Closure $closure = null)
+ * @method static SoapyBaseClient create(\Closure $closure = null, string $client = null)
  */
 class SoapyFacade extends Facade
 {
