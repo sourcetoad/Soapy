@@ -6,7 +6,7 @@ namespace Sourcetoad\Soapy;
 class SoapyCurtain
 {
     /** @var string */
-    protected $wsdl;
+    protected $wsdl = '';
 
     /** @var bool */
     protected $trace = false;
@@ -21,7 +21,7 @@ class SoapyCurtain
     protected $certificate;
 
     /** @var array */
-    protected $options;
+    protected $options = [];
 
     /** @var array */
     protected $classMap;
