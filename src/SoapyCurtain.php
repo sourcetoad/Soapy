@@ -154,7 +154,7 @@ class SoapyCurtain
 
     public function addTypeMapViaClassName(string $namespace, string $item, string $itemClass)
     {
-        $function = function(string $xml) use ($itemClass) {
+        $function = function (string $xml) use ($itemClass) {
             $object = simplexml_load_string($xml);
             return new $itemClass($object);
         };
