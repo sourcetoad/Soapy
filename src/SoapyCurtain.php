@@ -113,7 +113,7 @@ class SoapyCurtain
         $allowed = [WSDL_CACHE_NONE, WSDL_CACHE_DISK, WSDL_CACHE_MEMORY, WSDL_CACHE_BOTH];
 
         if (! in_array($cache, $allowed)) {
-            throw new \InvalidArgumentException('Cache value passed (' . $allowed . ') is not valid. Allowed (WSDL_CACHE_*)');
+            throw new \InvalidArgumentException('Cache value passed (' . $allowed . ') is not valid.');
         }
 
         $this->cache = $cache;
