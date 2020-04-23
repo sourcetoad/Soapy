@@ -3,7 +3,6 @@ on:
   push:
 jobs:
   tests:
-    if: false
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
