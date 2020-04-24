@@ -14,7 +14,7 @@ class SoapyServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->singleton(SoapyTub::class, function() {
+        $this->app->singleton(SoapyTub::class, function () {
             return new SoapyTub();
         });
     }
