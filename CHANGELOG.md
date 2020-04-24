@@ -1,3 +1,8 @@
+# v1.2.0 (April 24, 2020)
+ * Laravel 7 support
+ * GitHub Action - Automated tests
+ * GitHub Action - Automated CS
+
 # v1.1.0 (December 3, 2019)
  * Support for custom Soap Clients.
  * Support for empty options.
