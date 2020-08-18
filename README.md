@@ -4,7 +4,7 @@ SOAP is old, but still used. Soapy is modern, but feature limited to fit our use
 Heavily inspired by [artisaninweb/laravel-soap](https://github.com/artisaninweb/laravel-soap).
 
 ### Install
-This package is currently supporting Laravel 6.x.
+This package is currently supporting Laravel 7.x.
 
 ```
 composer require sourcetoad/soapy
@@ -20,6 +20,7 @@ This package will use Laravel Auto Discovery to automatically register the Servi
  * **trace** - Whether to expose internal methods on SoapClient.
  * **cache** - Flag to use for WSDL cache.
  * **location** - Override URL to use for SOAP Requests.
+ * **uri** - Overide namespace to use for SOAP Requests.
  * **certificate** - Certificate path for authentication with Server.
  * **options** - Array of any settings from [SoapClient#options](https://www.php.net/manual/en/soapclient.soapclient.php#options)
  * **classmap** - Array of class maps to map objects -> classes.
