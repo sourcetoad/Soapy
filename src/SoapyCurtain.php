@@ -5,8 +5,8 @@ namespace Sourcetoad\Soapy;
 
 class SoapyCurtain
 {
-    /** @var string */
-    protected $wsdl = '';
+    /** @var string|null */
+    protected $wsdl = null;
 
     /** @var bool */
     protected $trace = false;
@@ -15,10 +15,10 @@ class SoapyCurtain
     protected $cache = WSDL_CACHE_NONE;
 
     /** @var string|null */
-    protected $location;
+    protected $location = null;
 
     /** @var string|null */
-    protected $uri;
+    protected $uri = null;
 
     /** @var string */
     protected $certificate;
