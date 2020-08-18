@@ -29,7 +29,7 @@ class SoapyTub
             $soapyClient = $soapClient;
         }
 
-        if (empty($service->getWsdl())) {
+        if (! $service->isReady()) {
             throw new CurtainRequiresWsdlException();
         }
 

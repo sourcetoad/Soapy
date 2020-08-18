@@ -14,8 +14,11 @@ class SoapyCurtain
     /** @var int */
     protected $cache = WSDL_CACHE_NONE;
 
-    /** @var string */
+    /** @var string|null */
     protected $location;
+
+    /** @var string|null */
+    protected $uri;
 
     /** @var string */
     protected $certificate;
@@ -31,7 +34,7 @@ class SoapyCurtain
 
     #region getters
 
-    public function getWsdl(): string
+    public function getWsdl(): ?string
     {
         return $this->wsdl;
     }
@@ -56,6 +59,11 @@ class SoapyCurtain
         return $this->location;
     }
 
+    public function getUri(): ?string
+    {
+        return $this->uri;
+    }
+
     public function getOptions(): array
     {
         $baseOptions = [
@@ -77,6 +85,10 @@ class SoapyCurtain
 
         if ($this->getLocation()) {
             $baseOptions['location'] = $this->getLocation();
+        }
+
+        if ($this->getUri()) {
+            $baseOptions['uri'] = $this->getUri();
         }
 
         return array_merge($this->options, $baseOptions);
@@ -152,6 +164,12 @@ class SoapyCurtain
         return $this;
     }
 
+    public function setUri(string $uri): self
+    {
+        $this->uri = $uri;
+        return $this;
+    }
+
     public function addTypeMapViaClassName(string $namespace, string $item, string $itemClass)
     {
         $function = function (string $xml) use ($itemClass) {
@@ -172,6 +190,19 @@ class SoapyCurtain
 
         $this->typeMap[] = $typeMap;
         return $this;
+    }
+
+    #endregion
+
+    #region functions
+
+    public function isReady(): bool
+    {
+        if (! empty($this->getLocation()) && ! empty($this->getUri())) {
+            return true;
+        }
+
+        return !empty($this->getWsdl());
     }
 
     #endregion
