@@ -1,3 +1,6 @@
+# v1.3.0 (November 10, 2020)
+ * Laravel 8 support
+
 # v1.2.0 (April 24, 2020)
  * Laravel 7 support
  * GitHub Action - Automated tests
