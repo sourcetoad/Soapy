@@ -55,7 +55,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: composer install --no-suggest --prefer-dist -n -o
+        run: composer install --prefer-dist -n -o
 
       - name: Run style check
         id: style_check
