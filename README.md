@@ -6,7 +6,7 @@ Heavily inspired by [artisaninweb/laravel-soap](https://github.com/artisaninweb/
 ### Install
 This package is currently supporting Laravel 7.x and Laravel 8.x.
 
-```
+```shell
 composer require sourcetoad/soapy
 ```
 
@@ -20,7 +20,7 @@ This package will use Laravel Auto Discovery to automatically register the Servi
  * **trace** - Whether to expose internal methods on SoapClient.
  * **cache** - Flag to use for WSDL cache.
  * **location** - Override URL to use for SOAP Requests.
- * **uri** - Overide namespace to use for SOAP Requests.
+ * **uri** - Override namespace to use for SOAP Requests.
  * **certificate** - Certificate path for authentication with Server.
  * **options** - Array of any settings from [SoapClient#options](https://www.php.net/manual/en/soapclient.soapclient.php#options)
  * **classmap** - Array of class maps to map objects -> classes.
@@ -29,10 +29,10 @@ This package will use Laravel Auto Discovery to automatically register the Servi
 #### Example (Class maps)
 Creating a client and making a request with class maps.
 
-```
+```php
 $this->client = SoapyFacade::create(function (SoapyCurtain $curtain) {
     return $curtain
-        ->setWsdl('http://example.org?wsdl')
+        ->setWsdl('https://example.org?wsdl')
         ->setTrace(true)
         ->setOptions([
             'encoding' => 'UTF-8'
@@ -42,13 +42,13 @@ $this->client = SoapyFacade::create(function (SoapyCurtain $curtain) {
             'FooResponse' => FooResponse::class
         ])
         ->setCache(WSDL_CACHE_MEMORY)
-        ->setLocation(https://example.org);
+        ->setLocation('https://example.org');
 });
 ```
 
 Presuming you had XML for the expected request like this.
 
-```
+```xml
 <Foo>
     <bar>Connor</bar>
     <baz>true</baz>
@@ -57,7 +57,7 @@ Presuming you had XML for the expected request like this.
 
 You could produce a matching class to resemble that data.
 
-```
+```php
 <?php
 class Foo {
     protected $bar;
@@ -72,7 +72,7 @@ class Foo {
 
 You could then call a fictitious method name "fizz" on the SOAP Class like.
 
-```
+```php
 $this->client->call('fizz', new Foo("Connor", true));
 ```
 
@@ -80,7 +80,7 @@ This shows the benefit of never messing with XML directly.
 
 Likewise for the response. Imagine you got back this.
 
-```
+```xml
 <FooResponse>
     <status>Success.</status>
 </FooResponse>
@@ -88,7 +88,7 @@ Likewise for the response. Imagine you got back this.
 
 This can also be mapped with the following class.
 
-```
+```php
 <?php
 class FooResponse {
     protected $status;
@@ -97,7 +97,7 @@ class FooResponse {
 
 So now you can do:
 
-```
+```php
 echo $this->client->call('fizz', new Foo("Connor", true))->status;
 // Success.
 ```
@@ -107,25 +107,25 @@ echo $this->client->call('fizz', new Foo("Connor", true))->status;
 
 This example shows bare minimum WSDL location and no class maps.
 
-```
+```php
 $this->client = SoapyFacade::create(function (SoapyCurtain $curtain) {
     return $curtain
-        ->setWsdl('http://example.org?wsdl')
+        ->setWsdl('https://example.org?wsdl')
 });
 ```
 
 Presuming you had XML for the expected request like this.
 
-```
+```xml
 <Foo>
     <bar>Connor</bar>
     <baz>true</baz>
-<Foo>
+</Foo>
 ```
 
 You could then call a fictitious method name "fizz" on the SOAP Class like.
 
-```
+```php
 $this->client->call('fizz', [
     'bar' => 'Connor',
     'baz' => true
@@ -141,11 +141,10 @@ This is okay, because patching a generic SOAP Client for all the strangeness tha
 
 Start with a new class, that extends our SoapyBaseClient.
 
-```
+```php
 <?php
-
 class CustomClass extends Sourcetoad\Soapy\SoapyBaseClient {
-
+ // 
 }
 ```
 
@@ -153,9 +152,9 @@ From that class. You can overload any of the functions it provides.
 
 Then pass the class name (fully qualified) to the Curtain during generation.
 
-```
+```php
 $this->client = SoapyFacade::create(function (SoapyCurtain $curtain) {
     return $curtain
-        ->setWsdl('http://example.org?wsdl')
+        ->setWsdl('https://example.org?wsdl')
 }, CustomClass::class);
 ```
