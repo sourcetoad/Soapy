@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.0.2",
         "ext-soap": "*",
         "ext-simplexml": "*",
         "illuminate/support": "^8.0|^9.0"
