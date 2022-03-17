@@ -1,9 +1,9 @@
 # v2.0.0 (March 17, 2022)
-* SIP-33 - PHP 8.0 support
-* JEST-99 - Use V2 cache system
+* PHP 8.0 support
+* Use V2 cache system
 * Readme updated with docblocks
-* SIP-131 - PHP 8.1 support
-* SIP-229 - Laravel 9 support
+* PHP 8.1 support
+* Laravel 9 support
 
 # v1.3.0 (November 10, 2020)
  * Laravel 8 support
