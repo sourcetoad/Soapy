@@ -10,7 +10,7 @@ jobs:
         php: [8.0.2, 8.1]
         laravel: [8.0, 9.0, 10.0]
         stability: [prefer-lowest, prefer-stable]
-    name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
+    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.stability }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
