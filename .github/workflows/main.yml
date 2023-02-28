@@ -7,10 +7,9 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.0.2, 8.1]
+        php: [8.0, 8.1]
         laravel: [8.0, 9.0, 10.0]
-        stability: [prefer-lowest, prefer-stable]
-    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.stability }}
+    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -23,8 +22,8 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ matrix.php }}-${{ matrix.laravel }}-${{ matrix.stability }}-${{ hashFiles('**/composer.json') }}
-          restore-keys: ${{ runner.os }}-composer-${{ matrix.php }}-${{ matrix.laravel }}-${{ matrix.stability }}-
+          key: ${{ runner.os }}-composer-${{ matrix.php }}-${{ matrix.laravel }}-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-${{ matrix.php }}-${{ matrix.laravel }}-
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -35,7 +34,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: composer require "illuminate/support:^${{ matrix.laravel }}" --${{ matrix.stability }} --prefer-dist --no-interaction
+        run: composer require "illuminate/support:^${{ matrix.laravel }}" --prefer-stable --prefer-dist --no-interaction
 
       - name: Execute tests
         run: vendor/bin/phpunit --verbose
