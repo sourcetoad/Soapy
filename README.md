@@ -4,7 +4,7 @@ SOAP is old, but still used. Soapy is modern, but feature limited to fit our use
 Heavily inspired by [artisaninweb/laravel-soap](https://github.com/artisaninweb/laravel-soap).
 
 ### Install
-This package is currently supporting Laravel 7.x and Laravel 8.x.
+This package is currently supporting Laravel 8.x, 9.x, and 10.x.
 
 ```shell
 composer require sourcetoad/soapy
@@ -143,8 +143,8 @@ Start with a new class, that extends our SoapyBaseClient.
 
 ```php
 <?php
-class CustomClass extends Sourcetoad\Soapy\SoapyBaseClient {
- // 
+class CustomClass extends \Sourcetoad\Soapy\SoapyBaseClient {
+    //
 }
 ```
 
