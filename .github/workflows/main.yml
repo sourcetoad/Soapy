@@ -35,7 +35,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: composer install "illuminate/support:^${{ matrix.laravel }}" --${{ matrix.stability }} --prefer-dist --no-interaction
+        run: composer require "illuminate/support:^${{ matrix.laravel }}" --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
         run: vendor/bin/phpunit --verbose
