@@ -1,9 +1,13 @@
+# v2.1.0 (March 1, 2023)
+ * Laravel 10 support
+ * GitHub Action workflow updates
+
 # v2.0.0 (March 17, 2022)
-* PHP 8.0 support
-* Use V2 cache system
-* Readme updated with docblocks
-* PHP 8.1 support
-* Laravel 9 support
+ * PHP 8.0 support
+ * Use V2 cache system
+ * Readme updated with docblocks
+ * PHP 8.1 support
+ * Laravel 9 support
 
 # v1.3.0 (November 10, 2020)
  * Laravel 8 support
