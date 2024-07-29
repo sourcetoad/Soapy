@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Sourcetoad\Soapy;
 
@@ -9,28 +10,28 @@ use Sourcetoad\Soapy\Exceptions\CurtainRequiresWsdlException;
 
 class SoapyTub
 {
-    public function create(\Closure $closure, string $soapClient = null): SoapyBaseClient
+    public function create(\Closure $closure, ?string $soapClient = null): SoapyBaseClient
     {
-        $curtain = new SoapyCurtain();
+        $curtain = new SoapyCurtain;
 
         /** @var SoapyCurtain $service */
         $service = $closure($curtain);
 
         if (is_null($service)) {
-            throw new CurtainNotSetupException();
+            throw new CurtainNotSetupException;
         }
 
         /** @var SoapyBaseClient $soapyClient */
         $soapyClient = SoapyClient::class;
         if (! empty($soapClient)) {
             if (! class_exists($soapClient)) {
-                throw new ClientClassNotFoundException();
+                throw new ClientClassNotFoundException;
             }
             $soapyClient = $soapClient;
         }
 
         if (! $service->isReady()) {
-            throw new CurtainRequiresWsdlException();
+            throw new CurtainRequiresWsdlException;
         }
 
         $client = new $soapyClient(

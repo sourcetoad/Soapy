@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Sourcetoad\Soapy\Tests;
 
@@ -12,6 +13,6 @@ class BaseTestCase extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->baseWsdl = __DIR__ . '/example.wsdl';
+        $this->baseWsdl = __DIR__.'/example.wsdl';
     }
 }

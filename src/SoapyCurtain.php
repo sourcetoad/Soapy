@@ -1,38 +1,30 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 namespace Sourcetoad\Soapy;
 
 class SoapyCurtain
 {
-    /** @var string|null */
-    protected $wsdl = null;
+    protected ?string $wsdl = null;
 
-    /** @var bool */
-    protected $trace = false;
+    protected bool $trace = false;
 
-    /** @var int */
-    protected $cache = WSDL_CACHE_NONE;
+    protected int $cache = WSDL_CACHE_NONE;
 
-    /** @var string|null */
-    protected $location = null;
+    protected ?string $location = null;
 
-    /** @var string|null */
-    protected $uri = null;
+    protected ?string $uri = null;
 
-    /** @var string */
-    protected $certificate;
+    protected ?string $certificate = null;
 
-    /** @var array */
-    protected $options = [];
+    protected array $options = [];
 
-    /** @var array */
-    protected $classMap;
+    protected array $classMap = [];
 
-    /** @var array */
-    protected $typeMap;
+    protected array $typeMap = [];
 
-    #region getters
+    //region getters
 
     public function getWsdl(): ?string
     {
@@ -67,7 +59,7 @@ class SoapyCurtain
     public function getOptions(): array
     {
         $baseOptions = [
-            'trace'      => $this->getTrace(),
+            'trace' => $this->getTrace(),
             'cache_wsdl' => $this->getCache(),
         ];
 
@@ -104,19 +96,21 @@ class SoapyCurtain
         return $this->typeMap;
     }
 
-    #endregion
+    //endregion
 
-    #region setters
+    //region setters
 
     public function setWsdl(string $wsdl): self
     {
         $this->wsdl = $wsdl;
+
         return $this;
     }
 
     public function setTrace(bool $flag): self
     {
         $this->trace = $flag;
+
         return $this;
     }
 
@@ -125,10 +119,11 @@ class SoapyCurtain
         $allowed = [WSDL_CACHE_NONE, WSDL_CACHE_DISK, WSDL_CACHE_MEMORY, WSDL_CACHE_BOTH];
 
         if (! in_array($cache, $allowed)) {
-            throw new \InvalidArgumentException('Cache value passed (' . $allowed . ') is not valid.');
+            throw new \InvalidArgumentException('Cache value passed ('.$cache.') is not valid.');
         }
 
         $this->cache = $cache;
+
         return $this;
     }
 
@@ -143,58 +138,65 @@ class SoapyCurtain
         }
 
         $this->classMap = $classes;
+
         return $this;
     }
 
     public function setOptions(array $options): self
     {
         $this->options = $options;
+
         return $this;
     }
 
     public function setCertificate(string $certificate): self
     {
         $this->certificate = $certificate;
+
         return $this;
     }
 
     public function setLocation(string $location): self
     {
         $this->location = $location;
+
         return $this;
     }
 
     public function setUri(string $uri): self
     {
         $this->uri = $uri;
+
         return $this;
     }
 
-    public function addTypeMapViaClassName(string $namespace, string $item, string $itemClass)
+    public function addTypeMapViaClassName(string $namespace, string $item, string $itemClass): self
     {
         $function = function (string $xml) use ($itemClass) {
             $object = simplexml_load_string($xml);
+
             return new $itemClass($object);
         };
 
         return $this->addTypeMap($namespace, $item, $function);
     }
 
-    public function addTypeMap(string $namespace, string $item, \Closure $fromXml)
+    public function addTypeMap(string $namespace, string $item, \Closure $fromXml): self
     {
         $typeMap = [
-            'type_ns'   => $namespace,
+            'type_ns' => $namespace,
             'type_name' => $item,
-            'from_xml'  => $fromXml,
+            'from_xml' => $fromXml,
         ];
 
         $this->typeMap[] = $typeMap;
+
         return $this;
     }
 
-    #endregion
+    //endregion
 
-    #region functions
+    //region functions
 
     public function isReady(): bool
     {
@@ -202,8 +204,8 @@ class SoapyCurtain
             return true;
         }
 
-        return !empty($this->getWsdl());
+        return ! empty($this->getWsdl());
     }
 
-    #endregion
+    //endregion
 }
