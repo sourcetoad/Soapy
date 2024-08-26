@@ -1,3 +1,9 @@
+# v3.0.0 (August 26, 2024)
+ * Laravel 11 Support
+ * Drop PHP 8.1 or lower.
+ * PHP 8.3 support
+ * [Dev] Move to Pint
+
 # v2.1.0 (March 1, 2023)
  * Laravel 10 support
  * GitHub Action workflow updates
