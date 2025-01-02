@@ -24,7 +24,7 @@ class SoapyCurtain
 
     protected array $typeMap = [];
 
-    //region getters
+    // region getters
 
     public function getWsdl(): ?string
     {
@@ -96,9 +96,9 @@ class SoapyCurtain
         return $this->typeMap;
     }
 
-    //endregion
+    // endregion
 
-    //region setters
+    // region setters
 
     public function setWsdl(string $wsdl): self
     {
@@ -194,9 +194,9 @@ class SoapyCurtain
         return $this;
     }
 
-    //endregion
+    // endregion
 
-    //region functions
+    // region functions
 
     public function isReady(): bool
     {
@@ -207,5 +207,5 @@ class SoapyCurtain
         return ! empty($this->getWsdl());
     }
 
-    //endregion
+    // endregion
 }
