@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.2||^8.3||^8.4",
         "ext-simplexml": "*",
         "ext-soap": "*",
         "illuminate/support": "^11"
@@ -23,7 +23,7 @@
     "require-dev": {
         "orchestra/testbench": "^9.2",
         "phpunit/phpunit": "^11.2",
-        "laravel/pint": "^1.17"
+        "laravel/pint": "^1.19"
     },
     "autoload": {
         "psr-4": {

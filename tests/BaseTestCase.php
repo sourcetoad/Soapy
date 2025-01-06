@@ -10,7 +10,7 @@ class BaseTestCase extends TestCase
 {
     protected $baseWsdl;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->baseWsdl = __DIR__.'/example.wsdl';

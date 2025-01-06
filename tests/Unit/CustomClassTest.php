@@ -13,7 +13,7 @@ use Sourcetoad\Soapy\Tests\TestSoapyClient;
 
 class CustomClassTest extends BaseTestCase
 {
-    public function testCreatingClientWithNoCustomOverload()
+    public function test_creating_client_with_no_custom_overload()
     {
         $client = SoapyFacade::create(function (SoapyCurtain $curtain) {
             return $curtain
@@ -24,7 +24,7 @@ class CustomClassTest extends BaseTestCase
         $this->assertInstanceOf(SoapyBaseClient::class, $client);
     }
 
-    public function testCreatingClientWithCustomOverload()
+    public function test_creating_client_with_custom_overload()
     {
         $baseClient = TestSoapyClient::class;
 
