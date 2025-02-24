@@ -4,7 +4,7 @@ SOAP is old, but still used. Soapy is modern, but feature limited to fit our use
 Heavily inspired by [artisaninweb/laravel-soap](https://github.com/artisaninweb/laravel-soap).
 
 ### Install
-This package is currently supporting Laravel 11.x.
+This package is currently supporting Laravel 11.x and 12.x.
 
 ```shell
 composer require sourcetoad/soapy
