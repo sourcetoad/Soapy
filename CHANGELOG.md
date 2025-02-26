@@ -1,3 +1,7 @@
+# v3.1.0 (February 26, 2025)
+ * Laravel 12 Support
+ * PHP 8.4 support
+
 # v3.0.0 (August 26, 2024)
  * Laravel 11 Support
  * Drop PHP 8.1 or lower.
